@@ -19,19 +19,24 @@ public class ProductTransformer {
      * @return a new Product with all transformations applied
      */
     public Product transform(Product product) {
+        // Rule 1: normalize name casing.
         Product transformed = product.withName(product.getName().toUpperCase());
 
+        // Rule 2: apply 10% discount for Electronics (case-insensitive match).
         if (transformed.getCategory().equalsIgnoreCase("Electronics")) {
             transformed = transformed.withPrice(transformed.getPrice() * 0.9);
         }
 
+        // Round once and reuse that rounded value for all downstream checks.
         double roundedPrice = Math.round(transformed.getPrice() * 100.0) / 100.0;
         transformed = transformed.withPrice(roundedPrice);
 
+        // Rule 3: classify premium electronics using final rounded price.
         if (transformed.getPrice() > 500.00 && transformed.getCategory().equalsIgnoreCase("Electronics")) {
             transformed = transformed.withCategory("Premium Electronics");
         }
 
+        // Rule 4: derive PriceRange from the same final rounded price.
         return transformed.withPriceRange(PriceRange.fromPrice(transformed.getPrice()));
     }
 }

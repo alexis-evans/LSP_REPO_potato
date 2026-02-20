@@ -6,6 +6,7 @@ package org.howard.edu.lsp.assignment3;
  * to create modified copies rather than mutating the original object.
  */
 public class Product {
+    // Immutable state; fields are set once in the constructor.
     private final int id;
     private final String name;
     private final double price;
@@ -82,6 +83,7 @@ public class Product {
      * @return a new Product instance with the updated name
      */
     public Product withName(String updatedName) {
+        // Return a copy to preserve immutability.
         return new Product(id, updatedName, price, category, priceRange);
     }
 
@@ -93,6 +95,7 @@ public class Product {
      * @return a new Product instance with the updated price
      */
     public Product withPrice(double updatedPrice) {
+        // Return a copy to preserve immutability.
         return new Product(id, name, updatedPrice, category, priceRange);
     }
 
@@ -104,6 +107,7 @@ public class Product {
      * @return a new Product instance with the updated category
      */
     public Product withCategory(String updatedCategory) {
+        // Return a copy to preserve immutability.
         return new Product(id, name, price, updatedCategory, priceRange);
     }
 
@@ -115,6 +119,7 @@ public class Product {
      * @return a new Product instance with the updated price range
      */
     public Product withPriceRange(PriceRange updatedPriceRange) {
+        // Return a copy to preserve immutability.
         return new Product(id, name, price, category, updatedPriceRange);
     }
 }

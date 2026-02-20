@@ -41,6 +41,7 @@ public class ETLPipeline {
      * @throws FileNotFoundException if the input file does not exist or cannot be read
      */
     public Result run(String inputPath, String outputPath) throws FileNotFoundException {
+        // Track run-summary metrics required by the assignment.
         int nonHeaderRowsEncountered = 0;
         int skippedRows = 0;
         int processedRows = 0;
@@ -48,15 +49,19 @@ public class ETLPipeline {
         try (Scanner scanner = new Scanner(new File(inputPath));
                 PrintWriter writer = new PrintWriter(new File(outputPath))) {
 
+            // Always write the canonical output header, even for empty input files.
             codec.writeHeader(writer);
 
             if (scanner.hasNextLine()) {
+                // Consume and ignore the input header row.
                 scanner.nextLine();
             }
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 nonHeaderRowsEncountered++;
+
+                // Parse/validate the row; invalid rows are skipped but still counted.
                 Optional<Product> parsedProduct = codec.parse(line);
 
                 if (parsedProduct.isEmpty()) {
@@ -64,6 +69,7 @@ public class ETLPipeline {
                     continue;
                 }
 
+                // Apply business rules and emit one transformed output row.
                 Product transformedProduct = transformer.transform(parsedProduct.get());
                 codec.writeProduct(writer, transformedProduct);
                 processedRows++;
@@ -131,9 +137,11 @@ public class ETLPipeline {
      * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
+        // Default paths expected by the assignment specification.
         String inputPath = "data/products.csv";
         String outputPath = "data/transformed_products.csv";
 
+        // Wire together ETL collaborators and execute once.
         ETLPipeline pipeline = new ETLPipeline(
                 new ProductCsvCodec(),
                 new ProductTransformer());

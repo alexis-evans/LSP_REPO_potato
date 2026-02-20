@@ -53,6 +53,7 @@ public enum PriceRange {
      * @return the appropriate PriceRange for the given price
      */
     public static PriceRange fromPrice(double price) {
+        // Ordered checks ensure every price maps to exactly one bracket.
         if (price <= 10.00) {
             return LOW;
         }
