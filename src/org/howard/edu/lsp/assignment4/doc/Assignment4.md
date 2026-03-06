@@ -71,8 +71,9 @@
 
 ## Class: Controller Graphics Display
 **Responsibilities:**
-- Fetch updated flight info from the database and refresh visual interface every 10 seconds
-- Provide user interface for controller-initiated queries on Aircraft Database
+- Fetch updated flight info from the database
+- Refresh visual interface every 10 seconds
+- Present aircraft information to Controller
 - Always listen for System Override signal from the Safety Analyzer that interrupts regular 10-second refreshes
 - Display alerts for dangerous situations immediately
 - Show results of Controller-initiated aircraft queries
@@ -93,6 +94,7 @@
 - Continuously scan flight data for dangerous situations and conflicts
 - Generate and trigger visual and audible alerts for the Controller
 - Issue a System Override signal to the Controller Graphics Display during emergencies
+- Notify ATC Ground Station when a safety warning or corrective action must be relayed
 
 **Collaborators (if any):**
 - Aircraft Database
