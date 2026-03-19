@@ -1,5 +1,7 @@
 # AI Tool Used: ChatGPT
 
+### Link to full chat for all three questions: https://chatgpt.com/share/69bc87c0-33c4-8003-b2fb-b4903d131245
+
 ## Transcript
 Q: complete question 2 now.
 

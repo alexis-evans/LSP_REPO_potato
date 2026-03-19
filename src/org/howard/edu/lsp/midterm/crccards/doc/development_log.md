@@ -1,5 +1,7 @@
 # AI Tool: ChatGPT
 
+### Link to full chat for all three questions: https://chatgpt.com/share/69bc87c0-33c4-8003-b2fb-b4903d131245
+
 ## How it helped:
 I asked ChatGPT to assist me with Question 1, and it guided me through implementing the Task and TaskManager classes. I first wrote the code myself and then checked it against what they provided. If it matched, I continued. If it didn't match, I assessed which version I liked better and what would fit the system more appropriately.
 
