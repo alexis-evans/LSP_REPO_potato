@@ -1,10 +1,10 @@
 package org.howard.edu.lsp.midterm.crccards;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
+    
 /**
  * Manages a collection of Task objects.
  * Supports adding tasks, finding tasks by ID, and retrieving tasks by status.
@@ -18,7 +18,7 @@ public class TaskManager {
      * Constructs a TaskManager with an empty task collection.
      */
     public TaskManager() {
-        tasks = new HashMap<>();
+        tasks = new LinkedHashMap<>();
     }
 
     /**
